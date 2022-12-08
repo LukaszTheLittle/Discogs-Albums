@@ -7,10 +7,22 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.lukaszmaly.android.discogsalbums.api.DiscogsApi
+import retrofit2.Retrofit
 
 class DiscogsAlbumsFragment: Fragment() {
 
     private lateinit var photoRecyclerView: RecyclerView
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        val retrofit: Retrofit = Retrofit.Builder()
+            .baseUrl("https://api.discogs.com/")
+            .build()
+
+        val discogsApi: DiscogsApi = retrofit.create(DiscogsApi::class.java)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
