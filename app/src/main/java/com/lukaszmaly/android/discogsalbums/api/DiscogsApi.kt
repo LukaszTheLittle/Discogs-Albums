@@ -1,4 +1,4 @@
-package com.lukaszmaly.android.discogsalbums.API
+package com.lukaszmaly.android.discogsalbums.api
 
 import retrofit2.Call
 import retrofit2.http.GET
