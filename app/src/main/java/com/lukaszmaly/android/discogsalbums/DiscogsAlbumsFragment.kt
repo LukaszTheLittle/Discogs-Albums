@@ -22,13 +22,6 @@ class DiscogsAlbumsFragment: Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val retrofit: Retrofit = Retrofit.Builder()
-            .baseUrl("https://api.discogs.com/")
-            .addConverterFactory(ScalarsConverterFactory.create())
-            .build()
-
-        val discogsApi: DiscogsApi = retrofit.create(DiscogsApi::class.java)
-
         val discogsApiPageRequest: Call<String> = discogsApi.fetchContents()
 
         discogsApiPageRequest.enqueue(object: Callback<String> {
