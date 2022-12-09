@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.lukaszmaly.android.discogsalbums.api.DiscogsApi
 import retrofit2.Retrofit
+import retrofit2.converter.scalars.ScalarsConverterFactory
 
 class DiscogsAlbumsFragment: Fragment() {
 
@@ -19,6 +20,7 @@ class DiscogsAlbumsFragment: Fragment() {
 
         val retrofit: Retrofit = Retrofit.Builder()
             .baseUrl("https://api.discogs.com/")
+            .addConverterFactory(ScalarsConverterFactory.create())
             .build()
 
         val discogsApi: DiscogsApi = retrofit.create(DiscogsApi::class.java)
