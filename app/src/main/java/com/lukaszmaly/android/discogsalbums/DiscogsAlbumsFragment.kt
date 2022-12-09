@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.lukaszmaly.android.discogsalbums.api.DiscogsApi
+import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.scalars.ScalarsConverterFactory
 
@@ -24,6 +25,8 @@ class DiscogsAlbumsFragment: Fragment() {
             .build()
 
         val discogsApi: DiscogsApi = retrofit.create(DiscogsApi::class.java)
+
+        val discogsApiPageRequest: Call<String> = discogsApi.fetchContents()
     }
 
     override fun onCreateView(
