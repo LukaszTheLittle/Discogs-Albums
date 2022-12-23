@@ -5,6 +5,11 @@ import retrofit2.http.GET
 
 interface DiscogsApi {
 
-    @GET("/")
+    @GET(HTTPS_ADDRESS_SPECIFIC_RELEASE)
     fun fetchContents(): Call<String>
+
+    companion object {
+        private const val HTTPS_ADDRESS_SPECIFIC_RELEASE = "/releases/249504" +
+                "?key=HEdkLFcSYnaBIZDloePj&secret=zjXuuQwdhTyiNBWXiIrdvozSGTtcqcmD"
+    }
 }
