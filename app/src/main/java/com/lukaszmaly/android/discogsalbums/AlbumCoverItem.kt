@@ -1,8 +1,8 @@
 package com.lukaszmaly.android.discogsalbums
 
 data class AlbumCoverItem(
-    var releaseId: String = "",
-    var artistName: String = "",
-    var albumTitle: String = "",
-    var url: String = ""
+    var id: String = "", // release id
+    var name: String = "", // artist name
+    var title: String = "", // album title
+    var resource_url: String = "" // cover photo url
 )
