@@ -9,7 +9,7 @@ interface DiscogsApi {
     fun fetchContents(): Call<String>
 
     companion object {
-        private const val HTTPS_ADDRESS_SPECIFIC_RELEASE = "/releases/249504" +
+        private const val HTTPS_ADDRESS_SPECIFIC_RELEASE = "/releases/24929597" +
                 "?key=HEdkLFcSYnaBIZDloePj&secret=zjXuuQwdhTyiNBWXiIrdvozSGTtcqcmD"
     }
 }
