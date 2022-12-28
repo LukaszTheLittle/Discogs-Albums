@@ -18,11 +18,11 @@ class DiscogsAlbumsFragment: Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val discogsLiveData: LiveData<String> = DiscogsFetch().fetchContents()
+        val discogsLiveData: LiveData<ReleaseData> = DiscogsFetch().fetchContents()
         discogsLiveData.observe(
             this,
-            Observer { responseString ->
-                Log.d(TAG, "Response received: $responseString")
+            Observer { ReleaseData ->
+                Log.d(TAG, "Response received: $ReleaseData")
             })
     }
 
