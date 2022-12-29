@@ -1,10 +1,12 @@
 package com.lukaszmaly.android.discogsalbums
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -32,6 +34,16 @@ class DiscogsAlbumsFragment: Fragment() {
         photoRecyclerView.layoutManager = GridLayoutManager(context, 3)
 
         return view
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        discogsAlbumsViewModel.releaseDataLiveData.observe(
+            viewLifecycleOwner,
+            Observer { releaseData ->
+                Log.d(TAG, "Have release data from ViewModel $releaseData")
+            }
+        )
     }
 
     companion object {
