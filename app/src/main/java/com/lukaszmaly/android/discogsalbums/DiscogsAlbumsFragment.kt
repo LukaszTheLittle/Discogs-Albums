@@ -53,6 +53,26 @@ class DiscogsAlbumsFragment: Fragment() {
         val bindTitle: (CharSequence) -> Unit = itemTextView::setText
     }
 
+    private class ThumbnailAdapter(private val releaseData: ReleaseData):
+        RecyclerView.Adapter<ThumbnailHolder>() {
+
+            override fun onCreateViewHolder(
+                parent: ViewGroup,
+                viewType: Int
+            ): ThumbnailHolder {
+                val textView = TextView(parent.context)
+                return ThumbnailHolder(textView)
+            }
+
+        override fun getItemCount(): Int {
+            return 1
+        }
+
+            override fun onBindViewHolder(holder: ThumbnailHolder, position: Int) {
+                holder.bindTitle(releaseData.title)
+            }
+        }
+
     companion object {
         fun newInstance() = DiscogsAlbumsFragment()
         private const val TAG = "DiscogsAlbumsFragment"
