@@ -1,7 +1,6 @@
 package com.lukaszmaly.android.discogsalbums
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -42,7 +41,7 @@ class DiscogsAlbumsFragment: Fragment() {
         discogsAlbumsViewModel.releaseDataLiveData.observe(
             viewLifecycleOwner,
             Observer { releaseData ->
-                Log.d(TAG, "Have release data from ViewModel $releaseData")
+                photoRecyclerView.adapter = ThumbnailAdapter(releaseData)
             }
         )
     }
@@ -75,6 +74,5 @@ class DiscogsAlbumsFragment: Fragment() {
 
     companion object {
         fun newInstance() = DiscogsAlbumsFragment()
-        private const val TAG = "DiscogsAlbumsFragment"
     }
 }
