@@ -1,12 +1,13 @@
 package com.lukaszmaly.android.discogsalbums
 
+import android.graphics.drawable.ColorDrawable
 import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import android.widget.TextView
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -69,12 +70,16 @@ class DiscogsAlbumsFragment: Fragment() {
                 return ThumbnailHolder(view)
             }
 
-        override fun getItemCount(): Int {
-            return 1
-        }
+            override fun getItemCount(): Int {
+                return 1
+            }
 
             override fun onBindViewHolder(holder: ThumbnailHolder, position: Int) {
-                holder.bindTitle(releaseData.title)
+                val placeholder: Drawable = ContextCompat.getDrawable(
+                    requireContext(),
+                    R.drawable.bean
+                ) ?: ColorDrawable()
+                holder.bindDrawable(placeholder)
             }
         }
 
