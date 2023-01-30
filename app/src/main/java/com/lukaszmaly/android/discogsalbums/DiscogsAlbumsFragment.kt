@@ -54,15 +54,19 @@ class DiscogsAlbumsFragment: Fragment() {
         val bindDrawable: (Drawable) -> Unit = itemImageView::setImageDrawable
     }
 
-    private class ThumbnailAdapter(private val releaseData: ReleaseData):
+    private inner class ThumbnailAdapter(private val releaseData: ReleaseData):
         RecyclerView.Adapter<ThumbnailHolder>() {
 
             override fun onCreateViewHolder(
                 parent: ViewGroup,
                 viewType: Int
             ): ThumbnailHolder {
-                val textView = TextView(parent.context)
-                return ThumbnailHolder(textView)
+                val view = layoutInflater.inflate(
+                    R.layout.list_item_gallery,
+                    parent,
+                    false
+                ) as ImageView
+                return ThumbnailHolder(view)
             }
 
         override fun getItemCount(): Int {
