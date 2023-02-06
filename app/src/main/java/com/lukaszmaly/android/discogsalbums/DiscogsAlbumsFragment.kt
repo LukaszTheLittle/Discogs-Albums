@@ -18,6 +18,7 @@ class DiscogsAlbumsFragment: Fragment() {
 
     private lateinit var discogsAlbumsViewModel: DiscogsAlbumsViewModel
     private lateinit var photoRecyclerView: RecyclerView
+    private lateinit var thumbnailDownloader: ThumbnailDownloader<ThumbnailHolder>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,6 +27,9 @@ class DiscogsAlbumsFragment: Fragment() {
 
         discogsAlbumsViewModel =
             ViewModelProvider(this)[DiscogsAlbumsViewModel::class.java]
+
+        thumbnailDownloader = ThumbnailDownloader()
+        lifecycle.addObserver((thumbnailDownloader))
     }
 
     override fun onCreateView(
@@ -48,6 +52,13 @@ class DiscogsAlbumsFragment: Fragment() {
             Observer { releaseData ->
                 photoRecyclerView.adapter = ThumbnailAdapter(releaseData)
             }
+        )
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        lifecycle.removeObserver(
+            thumbnailDownloader
         )
     }
 
