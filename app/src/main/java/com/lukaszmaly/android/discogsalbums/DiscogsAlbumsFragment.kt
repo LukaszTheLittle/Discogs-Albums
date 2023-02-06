@@ -25,7 +25,7 @@ class DiscogsAlbumsFragment: Fragment() {
         retainInstance = true
 
         discogsAlbumsViewModel =
-            ViewModelProvider(this).get(DiscogsAlbumsViewModel::class.java)
+            ViewModelProvider(this)[DiscogsAlbumsViewModel::class.java]
     }
 
     override fun onCreateView(
